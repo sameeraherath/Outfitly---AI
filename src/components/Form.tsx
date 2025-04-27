@@ -1,4 +1,7 @@
+"use client";
+
 import { useState } from "react";
+import { Sparkles } from "lucide-react";
 
 interface FormData {
   gender: string;
@@ -11,71 +14,258 @@ interface FormProps {
   onSubmit: (data: FormData) => void;
 }
 
-export default function Form({ onSubmit }: FormProps) {
+export default function OutfitForm({ onSubmit }: FormProps) {
+  const [step, setStep] = useState(1);
   const [gender, setGender] = useState("male");
   const [weather, setWeather] = useState("sunny");
   const [occasion, setOccasion] = useState("casual");
   const [style, setStyle] = useState("casual");
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleNextStep = () => {
+    setStep(step + 1);
+  };
+
+  const handlePreviousStep = () => {
+    setStep(step - 1);
+  };
+
+  const handleSubmit = () => {
     onSubmit({ gender, weather, occasion, style });
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-col gap-4 w-full max-w-md bg-white p-6 rounded-xl shadow-md"
-    >
-      <select
-        value={gender}
-        onChange={(e) => setGender(e.target.value)}
-        className="p-2 border rounded"
-      >
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <option value="unisex">Unisex</option>
-      </select>
+    <div className="w-full max-w-md mx-auto px-4 sm:px-0">
+      <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-5 sm:p-8 rounded-2xl shadow-lg border border-gray-100">
+        <div className="mb-4 sm:mb-6 text-center">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-1 sm:mb-2">
+            Style Finder
+          </h2>
+          <p className="text-gray-500 text-xs sm:text-sm">
+            Personalize your perfect outfit step-by-step
+          </p>
+        </div>
 
-      <select
-        value={weather}
-        onChange={(e) => setWeather(e.target.value)}
-        className="p-2 border rounded"
-      >
-        <option value="sunny">Sunny</option>
-        <option value="rainy">Rainy</option>
-        <option value="cold">Cold</option>
-        <option value="hot">Hot</option>
-      </select>
+        <div className="space-y-4 sm:space-y-5">
+          {step === 1 && (
+            <div>
+              <h3 className="text-lg font-medium text-gray-700 mb-2">
+                I&apos;m shopping for
+              </h3>
+              <div className="flex space-x-4 justify-center">
+                <button
+                  onClick={() => setGender("male")}
+                  className={`p-4 rounded-xl ${
+                    gender === "male"
+                      ? "bg-purple-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  Male
+                </button>
+                <button
+                  onClick={() => setGender("female")}
+                  className={`p-4 rounded-xl ${
+                    gender === "female"
+                      ? "bg-purple-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  Female
+                </button>
+                <button
+                  onClick={() => setGender("unisex")}
+                  className={`p-4 rounded-xl ${
+                    gender === "unisex"
+                      ? "bg-purple-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  Unisex
+                </button>
+              </div>
+            </div>
+          )}
 
-      <select
-        value={occasion}
-        onChange={(e) => setOccasion(e.target.value)}
-        className="p-2 border rounded"
-      >
-        <option value="casual">Casual</option>
-        <option value="work">Work</option>
-        <option value="party">Party</option>
-        <option value="gym">Gym</option>
-      </select>
+          {step === 2 && (
+            <div>
+              <h3 className="text-lg font-medium text-gray-700 mb-2">
+                Weather conditions
+              </h3>
+              <div className="flex space-x-4 justify-center">
+                <button
+                  onClick={() => setWeather("sunny")}
+                  className={`p-4 rounded-xl ${
+                    weather === "sunny"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  Sunny
+                </button>
+                <button
+                  onClick={() => setWeather("rainy")}
+                  className={`p-4 rounded-xl ${
+                    weather === "rainy"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  Rainy
+                </button>
+                <button
+                  onClick={() => setWeather("cold")}
+                  className={`p-4 rounded-xl ${
+                    weather === "cold"
+                      ? "bg-blue-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  Cold
+                </button>
+                <button
+                  onClick={() => setWeather("hot")}
+                  className={`p-4 rounded-xl ${
+                    weather === "hot" ? "bg-blue-500 text-white" : "bg-gray-200"
+                  }`}
+                >
+                  Hot
+                </button>
+              </div>
+            </div>
+          )}
 
-      <select
-        value={style}
-        onChange={(e) => setStyle(e.target.value)}
-        className="p-2 border rounded"
-      >
-        <option value="casual">Casual</option>
-        <option value="formal">Formal</option>
-        <option value="sporty">Sporty</option>
-        <option value="streetwear">Streetwear</option>
-      </select>
+          {step === 3 && (
+            <div>
+              <h3 className="text-lg font-medium text-gray-700 mb-2">
+                Occasion
+              </h3>
+              <div className="flex space-x-4 justify-center">
+                <button
+                  onClick={() => setOccasion("casual")}
+                  className={`p-4 rounded-xl ${
+                    occasion === "casual"
+                      ? "bg-green-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  Casual
+                </button>
+                <button
+                  onClick={() => setOccasion("work")}
+                  className={`p-4 rounded-xl ${
+                    occasion === "work"
+                      ? "bg-green-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  Work
+                </button>
+                <button
+                  onClick={() => setOccasion("party")}
+                  className={`p-4 rounded-xl ${
+                    occasion === "party"
+                      ? "bg-green-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  Party
+                </button>
+                <button
+                  onClick={() => setOccasion("gym")}
+                  className={`p-4 rounded-xl ${
+                    occasion === "gym"
+                      ? "bg-green-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  Gym
+                </button>
+              </div>
+            </div>
+          )}
 
-      <button
-        type="submit"
-        className="bg-blue-500 hover:bg-blue-600 text-white py-2 rounded transition"
-      >
-        Get Outfit
-      </button>
-    </form>
+          {step === 4 && (
+            <div>
+              <h3 className="text-lg font-medium text-gray-700 mb-2">
+                Style preference
+              </h3>
+              <div className="flex space-x-4 justify-center">
+                <button
+                  onClick={() => setStyle("casual")}
+                  className={`p-4 rounded-xl ${
+                    style === "casual"
+                      ? "bg-amber-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  Casual
+                </button>
+                <button
+                  onClick={() => setStyle("formal")}
+                  className={`p-4 rounded-xl ${
+                    style === "formal"
+                      ? "bg-amber-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  Formal
+                </button>
+                <button
+                  onClick={() => setStyle("sporty")}
+                  className={`p-4 rounded-xl ${
+                    style === "sporty"
+                      ? "bg-amber-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  Sporty
+                </button>
+                <button
+                  onClick={() => setStyle("streetwear")}
+                  className={`p-4 rounded-xl ${
+                    style === "streetwear"
+                      ? "bg-amber-500 text-white"
+                      : "bg-gray-200"
+                  }`}
+                >
+                  Streetwear
+                </button>
+              </div>
+            </div>
+          )}
+
+          {step === 5 && (
+            <div className="text-center">
+              <button
+                onClick={handleSubmit}
+                className="w-full py-3 px-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-xl shadow-md hover:from-purple-700 hover:to-pink-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all duration-300 flex items-center justify-center"
+              >
+                <Sparkles className="w-5 h-5 mr-2" />
+                Find My Perfect Outfit
+              </button>
+            </div>
+          )}
+
+          <div className="flex justify-between mt-6">
+            {step > 1 && (
+              <button
+                onClick={handlePreviousStep}
+                className="text-sm text-gray-500 hover:text-purple-500"
+              >
+                Previous
+              </button>
+            )}
+            {step < 5 ? (
+              <button
+                onClick={handleNextStep}
+                className="text-sm text-purple-500 hover:text-purple-700 ml-auto"
+              >
+                Next
+              </button>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
