@@ -1,12 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col bg-gray-50">
       {/* Hero section */}
-      <section className="py-20 px-4">
+      <section className="h-screen flex items-center justify-center px-4">
         <div className="container mx-auto max-w-4xl text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             Your Personal AI Outfit Stylist
@@ -139,28 +140,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-8 bg-gray-800 text-gray-300">
-        <div className="container mx-auto max-w-6xl px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <h3 className="text-xl font-bold text-white">Outfitly</h3>
-              <p>© 2025 Outfitly. All rights reserved.</p>
-            </div>
-            <div className="flex space-x-6">
-              <Link href="/terms" className="hover:text-white">
-                Terms
-              </Link>
-              <Link href="/privacy" className="hover:text-white">
-                Privacy
-              </Link>
-              <Link href="/contact" className="hover:text-white">
-                Contact
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }

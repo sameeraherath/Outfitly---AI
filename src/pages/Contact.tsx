@@ -42,8 +42,8 @@ export default function Contact() {
                 Thank You!
               </h2>
               <p className="text-gray-700 mb-6">
-                Your message has been sent successfully. We'll get back to you
-                soon.
+                Your message has been sent successfully. We&apos;ll get back to
+                you soon.
               </p>
               <Button variant="primary" onClick={() => setIsSubmitted(false)}>
                 Send Another Message
