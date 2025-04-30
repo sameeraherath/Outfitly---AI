@@ -13,7 +13,6 @@ export default function RecommendPage() {
   const handleFormSubmit = async (data: FormData) => {
     setLoading(true);
     try {
-      // Use the service to get the outfit recommendation
       const response = await outfitService.getRecommendation(data);
       setOutfit(response);
     } catch (error) {
@@ -31,7 +30,7 @@ export default function RecommendPage() {
     <main className="min-h-screen flex flex-col bg-gray-100">
       <div className="flex-1 flex flex-col items-center justify-center p-6">
         <header className="mb-6 text-center">
-          <h1 className="text-3xl font-bold text-purple-700">
+          <h1 className="text-3xl font-bold text-purple-700 pb-2 pt-4">
             Get Outfit Recommendations
           </h1>
           <p className="text-gray-600">

@@ -9,13 +9,14 @@ export function useOutfitForm(onSubmitCallback: (data: FormData) => void) {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState<FormData>({
     username: "",
-    gender: FORM_CONFIG.DEFAULT_VALUES.gender,
-    weather: FORM_CONFIG.DEFAULT_VALUES.weather,
-    occasion: FORM_CONFIG.DEFAULT_VALUES.occasion,
-    style: FORM_CONFIG.DEFAULT_VALUES.style,
-    age: FORM_CONFIG.DEFAULT_VALUES.age,
+    gender: "",
+    weather: "",
+    occasion: "",
+    style: "",
+    age: "",
   });
   const [ageError, setAgeError] = useState("");
+  const [fieldError, setFieldError] = useState("");
   const totalSteps = FORM_CONFIG.TOTAL_STEPS;
 
   // Update form data for a specific field
@@ -24,6 +25,7 @@ export function useOutfitForm(onSubmitCallback: (data: FormData) => void) {
       ...prev,
       [field]: value,
     }));
+    setFieldError("");
   };
 
   // Validate age field
@@ -31,8 +33,11 @@ export function useOutfitForm(onSubmitCallback: (data: FormData) => void) {
     // Clear any previous error
     setAgeError("");
 
-    // Age can be empty, that's fine
-    if (!formData.age) return true;
+    // Age is required
+    if (!formData.age) {
+      setAgeError("Age is required");
+      return false;
+    }
 
     // Check if age is a valid number
     const ageNum = parseInt(formData.age);
@@ -50,12 +55,54 @@ export function useOutfitForm(onSubmitCallback: (data: FormData) => void) {
     return true;
   };
 
+  // Validate current step's field
+  const validateCurrentStep = () => {
+    setFieldError("");
+    
+    // Check the required field based on the current step
+    switch (step) {
+      case 1:
+        if (!formData.username) {
+          setFieldError("Please enter your name");
+          return false;
+        }
+        break;
+      case 2:
+        if (!formData.gender) {
+          setFieldError("Please select your gender");
+          return false;
+        }
+        break;
+      case 3:
+        if (!formData.weather) {
+          setFieldError("Please select the weather");
+          return false;
+        }
+        break;
+      case 4:
+        if (!formData.occasion) {
+          setFieldError("Please select an occasion");
+          return false;
+        }
+        break;
+      case 5:
+        return validateAge();
+      case 6:
+        if (!formData.style) {
+          setFieldError("Please select a style");
+          return false;
+        }
+        break;
+    }
+    
+    return true;
+  };
+
   // Move to next step
   const handleNextStep = () => {
-    // Validate age before proceeding if on age step
-    if (step === 5) {
-      if (!validateAge()) return;
-    }
+    // Validate current step before proceeding
+    if (!validateCurrentStep()) return;
+    
     setStep(Math.min(step + 1, totalSteps));
   };
 
@@ -66,7 +113,7 @@ export function useOutfitForm(onSubmitCallback: (data: FormData) => void) {
 
   // Submit the form
   const handleSubmit = () => {
-    if (validateAge()) {
+    if (validateCurrentStep()) {
       onSubmitCallback(formData);
     }
   };
@@ -76,6 +123,7 @@ export function useOutfitForm(onSubmitCallback: (data: FormData) => void) {
     step,
     totalSteps,
     ageError,
+    fieldError,
     updateField,
     handleNextStep,
     handlePreviousStep,

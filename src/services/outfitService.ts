@@ -1,29 +1,26 @@
 import { FormData, OutfitResponse } from "@/types";
 import { getOutfitSuggestion } from "@/utils/geminiApi";
 
-/**
- * Creates a prompt for the AI based on user form data
- */
 export function createOutfitPrompt(data: FormData): string {
+  const greeting = data.username ? `Hello ${data.username}! ` : "Hi there! ";
   return `
-    Suggest a complete outfit for a ${data.age ? data.age + " year old " : ""}${
-    data.gender
-  } 
-    in ${data.weather} weather for a ${data.occasion} occasion with a ${
-    data.style
-  } style.
-    Include specific recommendations for tops, bottoms, shoes, and accessories that work well together.
-    Format your response in a clear, easy-to-read way.
+    ${greeting}I'd love to help you find the perfect outfit today! 
+    
+    Let me create a stylish look for a ${
+      data.age ? data.age + " year old " : ""
+    }${data.gender}
+    that's ideal for ${data.weather} weather and perfect for your ${
+    data.occasion
+  }.
+    I'll make sure it matches your preferred ${data.style} style.
+
+    Please write the answer in simple, friendly English.
+    Keep it conversational and easy to understand, with one short paragraph (less than 200 words).
+    Include specific, helpful suggestions for Tops, Bottoms, Shoes, and Accessories that work well together.
   `;
 }
 
-/**
- * Outfit service to handle getting outfit recommendations
- */
 export const outfitService = {
-  /**
-   * Get outfit recommendations based on user input
-   */
   async getRecommendation(data: FormData): Promise<OutfitResponse> {
     try {
       const prompt = createOutfitPrompt(data);
@@ -31,7 +28,7 @@ export const outfitService = {
     } catch (error) {
       console.error("Error in outfitService:", error);
       return {
-        text: "An unexpected error occurred while generating your outfit recommendation.",
+        text: "Oops! We couldn't generate your outfit recommendation right now. Please try again in a moment or refresh the page. We're working on getting this fixed for you!",
         error: error instanceof Error ? error.message : "Unknown error",
       };
     }

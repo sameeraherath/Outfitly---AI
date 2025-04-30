@@ -1,18 +1,14 @@
-/**
- * Application-wide constants
- */
-
 export const APP_NAME = "Outfitly";
 
 // Form configuration
 export const FORM_CONFIG = {
-  TOTAL_STEPS: 7, // Increasing total steps to accommodate username
+  TOTAL_STEPS: 7, 
   DEFAULT_VALUES: {
     username: "",
-    gender: "male",
-    weather: "sunny",
-    occasion: "casual",
-    style: "casual",
+    gender: "",
+    weather: "",
+    occasion: "",
+    style: "",
     age: "",
   },
 };
