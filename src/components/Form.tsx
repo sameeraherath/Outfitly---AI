@@ -54,7 +54,7 @@ export default function OutfitForm({ onSubmit }: FormProps) {
 
   return (
     <div className="w-full max-w-md mx-auto px-4 sm:px-0">
-      <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-5 sm:p-8 rounded-2xl shadow-lg border border-gray-100">
+      <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 sm:p-8 rounded-2xl shadow-lg border border-gray-100">
         <div className="mb-4 sm:mb-6 text-center">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-1 sm:mb-2">
             Style Finder
@@ -67,7 +67,7 @@ export default function OutfitForm({ onSubmit }: FormProps) {
             {Array.from({ length: totalSteps }).map((_, idx) => (
               <div
                 key={idx}
-                className={`h-1 w-5 mx-1 rounded-full ${
+                className={`h-1 w-4 sm:w-5 mx-1 rounded-full ${
                   idx + 1 <= step ? "bg-purple-500" : "bg-gray-200"
                 }`}
               />
@@ -104,7 +104,7 @@ export default function OutfitForm({ onSubmit }: FormProps) {
               <h3 className="text-lg font-medium text-gray-700 mb-2">
                 I&apos;m shopping for
               </h3>
-              <div className="flex space-x-4 justify-center">
+              <div className="grid grid-cols-2 sm:flex sm:space-x-4 gap-2 sm:gap-0 justify-center">
                 {FORM_OPTIONS.GENDER.map((option) => (
                   <SelectionButton
                     key={option.id}
@@ -128,7 +128,7 @@ export default function OutfitForm({ onSubmit }: FormProps) {
               <h3 className="text-lg font-medium text-gray-700 mb-2">
                 Weather conditions
               </h3>
-              <div className="flex space-x-4 justify-center">
+              <div className="grid grid-cols-2 sm:flex sm:space-x-4 gap-2 sm:gap-0 justify-center">
                 {FORM_OPTIONS.WEATHER.map((option) => (
                   <SelectionButton
                     key={option.id}
@@ -152,7 +152,7 @@ export default function OutfitForm({ onSubmit }: FormProps) {
               <h3 className="text-lg font-medium text-gray-700 mb-2">
                 Occasion
               </h3>
-              <div className="flex space-x-4 justify-center">
+              <div className="grid grid-cols-2 sm:flex sm:space-x-4 gap-2 sm:gap-0 justify-center">
                 {FORM_OPTIONS.OCCASION.map((option) => (
                   <SelectionButton
                     key={option.id}
@@ -197,7 +197,7 @@ export default function OutfitForm({ onSubmit }: FormProps) {
               <h3 className="text-lg font-medium text-gray-700 mb-2">
                 Style preference
               </h3>
-              <div className="flex space-x-4 justify-center">
+              <div className="grid grid-cols-2 sm:flex sm:space-x-4 gap-2 sm:gap-0 justify-center">
                 {FORM_OPTIONS.STYLE.map((option) => (
                   <SelectionButton
                     key={option.id}

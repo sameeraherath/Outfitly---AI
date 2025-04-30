@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -14,7 +14,15 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Outfitly - AI-Powered Outfit Inspiration",
-  description: "Discover personalized outfit ideas and style recommendations powered by AI.",
+  description:
+    "Discover personalized outfit ideas and style recommendations powered by AI.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1.5,
+  userScalable: true,
 };
 
 export default function RootLayout({

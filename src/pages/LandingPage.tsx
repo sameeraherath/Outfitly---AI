@@ -9,10 +9,10 @@ export default function Home() {
       {/* Hero section */}
       <section className="h-screen flex items-center justify-center px-4">
         <div className="container mx-auto max-w-4xl text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
             Your Personal AI Outfit Stylist
           </h1>
-          <p className="text-xl text-gray-700 mb-8 mx-auto max-w-2xl">
+          <p className="text-lg sm:text-xl text-gray-700 mb-6 sm:mb-8 mx-auto max-w-2xl">
             Outfitly uses advanced AI to recommend perfect outfits based on your
             preferences, occasion, and style. Say goodbye to outfit indecision
             forever.
@@ -33,15 +33,15 @@ export default function Home() {
       </section>
 
       {/* Features section */}
-      <section className="py-16 bg-white" id="how-it-works">
+      <section className="py-12 sm:py-16 bg-white" id="how-it-works">
         <div className="container mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl font-bold text-center mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10 sm:mb-16">
             How Outfitly Works
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-10">
-            <div className="bg-gray-50 rounded-xl p-6 text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-10">
+            <div className="bg-gray-50 rounded-xl p-5 sm:p-6 text-center">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <Image
                   src="/window.svg"
                   alt="Describe"
@@ -49,7 +49,7 @@ export default function Home() {
                   height={24}
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-3">
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">
                 1. Describe Your Needs
               </h3>
               <p className="text-gray-600">
@@ -58,19 +58,21 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="bg-gray-50 rounded-xl p-6 text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-gray-50 rounded-xl p-5 sm:p-6 text-center">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <Image src="/globe.svg" alt="AI" width={24} height={24} />
               </div>
-              <h3 className="text-xl font-semibold mb-3">2. AI Analysis</h3>
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">
+                2. AI Analysis
+              </h3>
               <p className="text-gray-600">
                 Our AI processes your information to understand your unique
                 style profile.
               </p>
             </div>
 
-            <div className="bg-gray-50 rounded-xl p-6 text-center">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="bg-gray-50 rounded-xl p-5 sm:p-6 text-center">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
                 <Image
                   src="/file.svg"
                   alt="Recommendations"
@@ -78,7 +80,7 @@ export default function Home() {
                   height={24}
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-3">
+              <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">
                 3. Get Recommendations
               </h3>
               <p className="text-gray-600">
@@ -91,14 +93,14 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-12 sm:py-16 bg-gray-50">
         <div className="container mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl font-bold text-center mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10 sm:mb-16">
             What Our Users Say
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white p-6 rounded-xl shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="bg-white p-5 sm:p-6 rounded-xl shadow-sm">
               <p className="text-gray-600 mb-4">
                 &quot;Outfitly has completely transformed how I dress. No more
                 standing in front of my closet for 30 minutes every
@@ -107,7 +109,7 @@ export default function Home() {
               <p className="font-semibold">- Sarah T.</p>
             </div>
 
-            <div className="bg-white p-6 rounded-xl shadow-sm">
+            <div className="bg-white p-5 sm:p-6 rounded-xl shadow-sm">
               <p className="text-gray-600 mb-4">
                 &quot;The AI recommendations are spot on. It&apos;s like having
                 a personal stylist in my pocket.&quot;
@@ -119,12 +121,12 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-purple-700 text-white">
+      <section className="py-12 sm:py-16 bg-purple-700 text-white">
         <div className="container mx-auto max-w-6xl px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">
             Ready to Elevate Your Style?
           </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto">
             Join thousands of users who have transformed their wardrobe with
             Outfitly&apos;s AI-powered recommendations.
           </p>
@@ -132,7 +134,7 @@ export default function Home() {
             <Button
               variant="outline"
               size="lg"
-              className="bg-white text-purple-700 hover:bg-gray-100"
+              className="bg-white text-purple-700 hover:bg-gray-100 w-full sm:w-auto"
             >
               Try Outfitly Now
             </Button>

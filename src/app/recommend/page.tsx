@@ -28,12 +28,12 @@ export default function RecommendPage() {
 
   return (
     <main className="min-h-screen flex flex-col bg-gray-100">
-      <div className="flex-1 flex flex-col items-center justify-center p-6">
-        <header className="mb-6 text-center">
-          <h1 className="text-3xl font-bold text-purple-700 pb-2 pt-4">
+      <div className="flex-1 flex flex-col items-center justify-center py-4 sm:py-6 px-4 sm:px-6">
+        <header className="mb-4 sm:mb-6 text-center">
+          <h1 className="text-2xl sm:text-3xl font-bold text-purple-700 pb-1 sm:pb-2 pt-2 sm:pt-4">
             Get Outfit Recommendations
           </h1>
-          <p className="text-gray-600">
+          <p className="text-sm sm:text-base text-gray-600">
             Tell us about your needs and we&apos;ll suggest the perfect outfit
           </p>
         </header>
